@@ -1,0 +1,1 @@
+# js_classical_pattern_in_oop
