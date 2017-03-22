@@ -11,8 +11,6 @@ var ClassA = (function () {
         if (opt_param) {
             o.p1 = opt_param;
         }
-        //o.p1 = opt_param || 2;
-        // o.f1 = f1;
     }
 
     ClassA.prototype.p1 = 2;
@@ -24,13 +22,18 @@ var ClassA = (function () {
 })();
 
 // --------------------------------------------------------------------------------------------------
+var ClassB = (function () {
+    function ClassB() {
 
-var ClassB = function () {
-};
-ClassB.prototype.p2 = 'Hello';
-ClassB.prototype.f2 = function (x) {
-    return x * x;
-};
+    }
+
+    ClassB.prototype.p2 = 'Hello';
+    ClassB.prototype.f2 = function (x) {
+        return x * x;
+    };
+
+    return ClassB;
+})();
 
 // --------------------------------------------------------------------------------------------------
 
@@ -56,7 +59,14 @@ var ClassD = (function (_super) {
         _super.call(this);
     }
 
-    ClassD.prototype.p4 = 7;
+    ClassD.prototype.p4 = 7 * ClassA.prototype.p1;
+    ClassD.prototype.f2 = function (x) {
+        return 5 * ClassC.prototype.f2.apply(this, [x]);
+    };
+
+    ClassD.prototype.f4 = function(x) {
+        return this.f2(x) + ClassA.prototype.f1();
+    }
 
     return ClassD;
 })(ClassC);
