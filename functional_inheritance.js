@@ -68,7 +68,7 @@ var ClassD = (function (_super) {
 
     ClassD.prototype.f4 = function(x) {
         return this.f2(x) + ClassA.prototype.f1();
-    }
+    };
 
     return ClassD;
 })(ClassC);
